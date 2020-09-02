@@ -1,8 +1,12 @@
 import * as React from 'react';
 import ButtonLink from '../Button/Button';
 
-const CallToAction = () => (
-  <ButtonLink className="button--call2action" href="https://pulse.passportization.ru">
+const CallToAction = ({disabled}) => (
+  <ButtonLink
+    className={disabled ? `button--disabled` : `button--call2action`}
+    href="https://pulse.passportization.ru"
+    disabled={disabled}
+  >
     Пройти опрос
   </ButtonLink>
 );

@@ -1,13 +1,21 @@
 import * as React from 'react';
 
-const BodyPart = (props) => (
-  <section className="body-part">
-    <h2 className="body-part__head">{props.header}</h2>
+const BodyPart = (props) => {
+  const classes = `body-part ${props.className}`;
 
-    <hr className="break-line" />
+  return (
+    <section className={classes}>
+      {props.header && (
+        <>
+          <h2 className="body-part__head">{props.header}</h2>
 
-    {props.children}
-  </section>
-)
+          <hr className="break-line" />
+        </>
+      )}
+
+      {props.children}
+    </section>
+  );
+};
 
 export default BodyPart;
