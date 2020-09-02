@@ -1,5 +1,5 @@
 {
-  "name": "passportization-pulse-site",
+  "name": "passportization-site",
   "version": "1.0.0",
   "description": "Сайт пасспортизации реконструируемых комплексов",
   "main": "index.js",

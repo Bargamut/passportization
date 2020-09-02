@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t bargamut/passportization-pulse-site:latest .
+docker build -t bargamut/passportization-site:latest .
