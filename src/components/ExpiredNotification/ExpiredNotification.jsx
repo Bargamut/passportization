@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import ButtonLink from '../Button/Button';
+
 const ExpiredNotification = () => (
   <>
     <p>
@@ -10,6 +12,15 @@ const ExpiredNotification = () => (
     <h3>Не пропустите:</h3>
 
     <p>Обновлённый вариант стартует <b>1 января 2021 года</b>!</p>
+
+    <p>
+      Хотите узнать о старте вовремя?
+      Укажите как с вами связаться и я отправлю одно уведомление как только новый опрос стартует!
+    </p>
+
+    <div className="call-to-action">
+      <ButtonLink href="https://forms.gle/P2c5SPqaminqmhCKA" target="_blank">Записаться</ButtonLink>
+    </div>
   </>
 );
 

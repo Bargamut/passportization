@@ -53,9 +53,7 @@ const App = () => (
 
           <p>У вас наверняка есть причины - поделитесь этим!</p>
 
-          <CallToAction disabled />
-
-
+          <CallToAction caption="Пройти опрос" disabled />
         </BodyCall>
 
         <hr className="break-line" />
@@ -88,7 +86,7 @@ const App = () => (
           <p>Все ответы анонимны.</p>
 
           <div className="call-to-action">
-            <CallToAction disabled />
+            <CallToAction caption="Пройти опрос" disabled />
           </div>
 
           <p>
