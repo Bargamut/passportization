@@ -5,7 +5,7 @@ const ButtonLink = (props) => {
 
   return (
     <a className={classes}
-      href={props.href}
+      href={!props.disabled ? props.href : null}
       target={props.target || `_parent`}
     >
       {props.children}

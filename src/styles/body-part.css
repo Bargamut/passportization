@@ -7,6 +7,10 @@
   border-radius: 5px;
 }
 
+.body-part-warning {
+  background-color: var(--color-3);
+}
+
 .body-part__head {
   margin-left: 30px;
   font-family: 'Google Sans', Roboto, Arial, sans-serif;

@@ -11,6 +11,7 @@ import SocialsShare from '../SocialsShare/SocialsShare';
 
 import HumansData from '../../providers/humans-data';
 import PublicsData from '../../providers/publics-data';
+import ExpiredNotification from '../ExpiredNotification/ExpiredNotification';
 
 const App = () => (
   <>
@@ -26,6 +27,10 @@ const App = () => (
       <Header />
 
       <main className="site-body">
+        <BodyPart header="Внимание" className="body-part-warning">
+          <ExpiredNotification />
+        </BodyPart>
+
         <BodyPart header="Что это?">
           <p>Проект частного исследования:</p>
 
@@ -48,7 +53,9 @@ const App = () => (
 
           <p>У вас наверняка есть причины - поделитесь этим!</p>
 
-          <CallToAction />
+          <CallToAction disabled />
+
+
         </BodyCall>
 
         <hr className="break-line" />
@@ -81,7 +88,7 @@ const App = () => (
           <p>Все ответы анонимны.</p>
 
           <div className="call-to-action">
-            <CallToAction />
+            <CallToAction disabled />
           </div>
 
           <p>
