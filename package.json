@@ -39,6 +39,7 @@
     "@babel/runtime": "7.11.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-image-gallery": "1.0.8",
     "react-yandex-metrika": "^2.6.0"
   }
 }
