@@ -13,21 +13,42 @@ import Results from '../Results/Results';
 import HumansData from '../../providers/humans-data';
 import PublicsData from '../../providers/publics-data';
 import ExpiredNotification from '../ExpiredNotification/ExpiredNotification';
+import Subscriber from '../Subscriber/Subscriber';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.curentTimestamp = Date.now();
-    this.sessionStartTimestamp = new Date(`01-01-2021`).getTime();
-    this.sessionFinishTimestamp = new Date(`01-03-2021`).getTime();
-    this.isHasResult = true;
-    this.isActiveSession =
-      this.curentTimestamp >= this.sessionStartTimestamp &&
-      this.curentTimestamp <= this.sessionFinishTimestamp;
+    this.state = {
+      results: [],
+      curentTimestamp: Date.now(),
+      sessionStartTimestamp: new Date(`01-01-2021`).getTime(),
+      sessionFinishTimestamp: new Date(`01-03-2021`).getTime(),
+      isHasResults: false,
+      isActiveSession:
+        this.curentTimestamp >= this.sessionStartTimestamp &&
+        this.curentTimestamp <= this.sessionFinishTimestamp,
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      results: [
+        { original: `/assets/content/results/20201001/001.jpg`, },
+        { original: `/assets/content/results/20201001/002.jpg`, },
+        { original: `/assets/content/results/20201001/003.jpg`, },
+        { original: `/assets/content/results/20201001/004.jpg`, },
+        { original: `/assets/content/results/20201001/005.jpg`, },
+        { original: `/assets/content/results/20201001/006.jpg`, },
+        { original: `/assets/content/results/20201001/007.jpg`, },
+      ],
+      isHasResults: true,
+    });
   }
 
   render() {
+    const {isActiveSession, isHasResults, results} = this.state;
+
     return (
       <>
         {process.env.NODE_ENV === `production` &&
@@ -56,22 +77,22 @@ class App extends React.Component {
 
             <hr className="break-line" />
 
-            {!this.isActiveSession
-              ? !this.isHasResult
-                ? (
-                    <BodyPart header="Внимание" className="body-part-warning">
-                      <ExpiredNotification />
-                    </BodyPart>
-                  )
-                : <Results data={[
-                  { original: `/assets/content/results/20201001/001.jpg`, },
-                  { original: `/assets/content/results/20201001/002.jpg`, },
-                  { original: `/assets/content/results/20201001/003.jpg`, },
-                  { original: `/assets/content/results/20201001/004.jpg`, },
-                  { original: `/assets/content/results/20201001/005.jpg`, },
-                  { original: `/assets/content/results/20201001/006.jpg`, },
-                  { original: `/assets/content/results/20201001/007.jpg`, },
-                ]} />
+            {!isActiveSession
+              ? (
+                <>
+                  <ExpiredNotification header="Внимание" isHasResults={isHasResults} />
+
+                  {isHasResults && (
+                    <>
+                      <Results data={results} />
+
+                      <hr className="break-line" />
+                    </>
+                  )}
+
+                  <Subscriber startDate="1 января 2021 года" />
+                </>
+                )
               : (
                 <BodyCall header="Ваш опыт ценен!" image="/assets/decor/icons/vesy.png">
                   <div className="pulse-balance">
