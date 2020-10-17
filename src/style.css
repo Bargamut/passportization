@@ -10,3 +10,5 @@
 @import './styles/cards-list.css';
 @import './styles/social-shares.css';
 @import './styles/pulse-beat.css';
+
+@import '~react-image-gallery/styles/css/image-gallery.css';

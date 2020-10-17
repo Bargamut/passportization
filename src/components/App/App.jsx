@@ -8,6 +8,7 @@ import CallToAction from '../CallToAction/CallToAction';
 import ButtonLink from '../Button/Button';
 import CardsList from '../CardsList/CardsList';
 import SocialsShare from '../SocialsShare/SocialsShare';
+import Results from '../Results/Results';
 
 import HumansData from '../../providers/humans-data';
 import PublicsData from '../../providers/publics-data';
@@ -20,6 +21,7 @@ class App extends React.Component {
     this.curentTimestamp = Date.now();
     this.sessionStartTimestamp = new Date(`01-01-2021`).getTime();
     this.sessionFinishTimestamp = new Date(`01-03-2021`).getTime();
+    this.isHasResult = true;
     this.isActiveSession =
       this.curentTimestamp >= this.sessionStartTimestamp &&
       this.curentTimestamp <= this.sessionFinishTimestamp;
@@ -55,11 +57,21 @@ class App extends React.Component {
             <hr className="break-line" />
 
             {!this.isActiveSession
-              ? (
-                <BodyPart header="Внимание" className="body-part-warning">
-                  <ExpiredNotification />
-                </BodyPart>
-                )
+              ? !this.isHasResult
+                ? (
+                    <BodyPart header="Внимание" className="body-part-warning">
+                      <ExpiredNotification />
+                    </BodyPart>
+                  )
+                : <Results data={[
+                  { original: `/assets/content/results/20201001/001.jpg`, },
+                  { original: `/assets/content/results/20201001/002.jpg`, },
+                  { original: `/assets/content/results/20201001/003.jpg`, },
+                  { original: `/assets/content/results/20201001/004.jpg`, },
+                  { original: `/assets/content/results/20201001/005.jpg`, },
+                  { original: `/assets/content/results/20201001/006.jpg`, },
+                  { original: `/assets/content/results/20201001/007.jpg`, },
+                ]} />
               : (
                 <BodyCall header="Ваш опыт ценен!" image="/assets/decor/icons/vesy.png">
                   <div className="pulse-balance">
